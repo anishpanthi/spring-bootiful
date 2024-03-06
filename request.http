@@ -1,8 +1,47 @@
+### List all books
 GET http://localhost:8080/api/books
 
-###
-
+### Get book by id
 GET http://localhost:8080/api/books/3
 
-###
+### Save a new book
+POST http://localhost:8080/api/books
+Content-Type: application/json
 
+{
+  "id": 4,
+  "title": "Microservices with Spring Boot",
+  "author": "Magnus Larsson",
+  "description": "Talks about microservices with Spring Boot",
+  "publishedDate": "2022-09-21"
+}
+
+### Update a book with invalid id
+PUT http://localhost:8080/api/books/10
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "Microservices with Spring Boot and Spring Cloud",
+  "author": "Magnus Larsson",
+  "description": "Talks about microservices with Spring Boot and Spring Cloud",
+  "publishedDate": "2022-09-21"
+}
+
+### Update a book with valid id
+PUT http://localhost:8080/api/books/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "Microservices with Spring Boot and Spring Cloud",
+  "author": "Magnus Larsson",
+  "description": "Talks about microservices with Spring Boot and Spring Cloud",
+  "publishedDate": "2022-09-21"
+}
+
+### Delete a book with invalid id
+DELETE http://localhost:8080/api/books/10
+
+### Delete a book with valid id
+DELETE http://localhost:8080/api/books/4
