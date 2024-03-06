@@ -3,7 +3,6 @@ package dev.app.demo.controller;
 import dev.app.demo.entity.Book;
 import dev.app.demo.repository.BookRepository;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class BookController {
     this.bookRepository = bookRepository;
   }
 
-  @GetMapping("/books/all")
+  @GetMapping("/books")
   public List<Book> getAllBooks() {
     return bookRepository.findAll();
   }

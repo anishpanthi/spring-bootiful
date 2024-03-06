@@ -1,1 +1,8 @@
-GET http://localhost:8080/api/books/4
+GET http://localhost:8080/api/books
+
+###
+
+GET http://localhost:8080/api/books/3
+
+###
+
