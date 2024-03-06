@@ -8,5 +8,6 @@ public record Book(
     Integer id,
     @NotEmpty
     String title,
-
-    String author, String description, LocalDate publishedDate) {}
+    String author,
+    String description,
+    LocalDate publishedDate) {}

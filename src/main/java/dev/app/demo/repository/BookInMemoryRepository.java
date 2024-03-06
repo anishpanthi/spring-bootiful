@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Log4j2
-public class BookRepository {
+public class BookInMemoryRepository {
 
   private final List<Book> books = new ArrayList<>();
 
