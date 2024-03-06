@@ -41,7 +41,7 @@ Content-Type: application/json
 }
 
 ### Delete a book with invalid id
-DELETE http://localhost:8080/api/books/10
+DELETE http://localhost:8080/api/books/6
 
 ### Delete a book with valid id
 DELETE http://localhost:8080/api/books/4
