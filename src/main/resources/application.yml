@@ -13,3 +13,12 @@ spring:
 logging:
   level:
     org.springframework.jdbc: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: when_authorized
