@@ -6,11 +6,19 @@ import jakarta.validation.Valid;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/books")
 @Log4j2
 public class BookController {
 
@@ -20,25 +28,25 @@ public class BookController {
     this.bookJdbcRepository = bookJdbcRepository;
   }
 
-  @GetMapping("/books")
+  @GetMapping
   public List<Book> getAllBooks() {
     return bookJdbcRepository.findAll();
   }
 
-  @GetMapping("/books/{id}")
+  @GetMapping("/{id}")
   public Book getBookById(@PathVariable Integer id) {
     return bookJdbcRepository
         .findById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found"));
   }
 
-  @PostMapping("/books")
+  @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public void saveBook(@RequestBody @Valid Book book) {
     bookJdbcRepository.save(book);
   }
 
-  @PutMapping("/books/{id}")
+  @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void updateBook(@RequestBody @Valid Book book, @PathVariable Integer id) {
     if (bookJdbcRepository.findById(id).isEmpty()) {
@@ -49,7 +57,7 @@ public class BookController {
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @DeleteMapping("/books/{id}")
+  @DeleteMapping("/{id}")
   public void deleteBook(@PathVariable Integer id) {
     bookJdbcRepository
         .findById(id)
