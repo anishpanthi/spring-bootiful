@@ -13,13 +13,10 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-        a ->
-            a.requestMatchers("/actuator/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated());
-    http.formLogin(Customizer.withDefaults());
-    http.csrf(AbstractHttpConfigurer::disable);
+            a -> a.requestMatchers("/actuator/**").permitAll().anyRequest().authenticated())
+        .formLogin(Customizer.withDefaults())
+        .csrf(AbstractHttpConfigurer::disable)
+        .httpBasic(Customizer.withDefaults());
     return http.build();
   }
 }
