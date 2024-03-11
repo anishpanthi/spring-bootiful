@@ -6,6 +6,8 @@ spring:
   sql:
     init:
       mode: always
+  application:
+    name: book-service
 
 logging:
   level:
