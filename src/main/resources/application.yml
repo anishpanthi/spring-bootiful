@@ -9,6 +9,11 @@ spring:
   docker:
     compose:
       lifecycle-management: start_only
+  security:
+    user:
+      name: 'user'
+      password: '{noop}password'
+    authorities: 'ROLE_USER'
 
 logging:
   level:
