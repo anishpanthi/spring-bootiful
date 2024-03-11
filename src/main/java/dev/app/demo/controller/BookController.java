@@ -2,6 +2,7 @@ package dev.app.demo.controller;
 
 import dev.app.demo.entity.Book;
 import dev.app.demo.repository.BookJdbcRepository;
+import io.micrometer.observation.annotation.Observed;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
@@ -29,11 +30,13 @@ public class BookController {
   }
 
   @GetMapping
+  @Observed(name = "book-api", contextualName = "get-all-books")
   public List<Book> getAllBooks() {
     return bookJdbcRepository.findAll();
   }
 
   @GetMapping("/{id}")
+  @Observed(name = "book-api", contextualName = "get-book-by-id")
   public Book getBookById(@PathVariable Integer id) {
     return bookJdbcRepository
         .findById(id)
@@ -41,12 +44,14 @@ public class BookController {
   }
 
   @PostMapping
+  @Observed(name = "book-api", contextualName = "post-book")
   @ResponseStatus(HttpStatus.CREATED)
   public void saveBook(@RequestBody @Valid Book book) {
     bookJdbcRepository.save(book);
   }
 
   @PutMapping("/{id}")
+  @Observed(name = "book-api", contextualName = "put-book")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void updateBook(@RequestBody @Valid Book book, @PathVariable Integer id) {
     if (bookJdbcRepository.findById(id).isEmpty()) {
@@ -56,6 +61,7 @@ public class BookController {
     bookJdbcRepository.update(book, id);
   }
 
+  @Observed(name = "book-api", contextualName = "delete-book")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping("/{id}")
   public void deleteBook(@PathVariable Integer id) {
