@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://viaduct.proxy.rlwy.net:26036/railway
+    url: jdbc:postgresql://monorail.proxy.rlwy.net:33137/railway
     username: postgres
-    password: ALPrrgVGEUxRzNlsInxDuGtfFxqadubx
+    password: sVvsXuCywNWOKvlEVdujhFldvqGhkARz
   sql:
     init:
       mode: always
