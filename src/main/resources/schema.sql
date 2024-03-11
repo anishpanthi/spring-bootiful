@@ -7,6 +7,6 @@ create table if not exists books
     published_date  date not null
     );
 
-insert into books (title, author, description, published_date) values ('Java', 'James Gosling', 'Java Programming', '2001-01-01');
-insert into books (title, author, description, published_date) values ('Python', 'Guido van Rossum', 'Python Programming', '2010-05-01');
-insert into books (title, author, description, published_date) values ('C++', 'Bjarne Stroustrup', 'C++ Programming', '2020-11-18');
+-- insert into books (title, author, description, published_date) values ('Java', 'James Gosling', 'Java Programming', '2001-01-01');
+-- insert into books (title, author, description, published_date) values ('Python', 'Guido van Rossum', 'Python Programming', '2010-05-01');
+-- insert into books (title, author, description, published_date) values ('C++', 'Bjarne Stroustrup', 'C++ Programming', '2020-11-18');
